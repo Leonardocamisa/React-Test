@@ -2,10 +2,11 @@ import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const baseURL = "https://jsonplaceholder.typicode.com/posts";
+const baseURL = `https://jsonplaceholder.typicode.com/posts`;
 
 const PostList = () => {
   const [post, setPost] = React.useState(null);
+
 
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
@@ -16,9 +17,9 @@ const PostList = () => {
   if (!post) return null;
 
   return (
-    post.map((post) => {
+    post.map(post => {
     return <div key={post.id} className="card">
-        <Link to="/PostDetails">Details</Link>
+        <Link to={`/PostDetails/${post.id}`}>Details</Link>
       <h1>title {post.id}: {post.title}</h1>
     </div>})
   );
