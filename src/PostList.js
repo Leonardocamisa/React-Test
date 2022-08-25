@@ -8,9 +8,11 @@ const PostList = () => {
   const [post, setPost] = React.useState(null);
 
   React.useEffect(() => {
-    axios.get(baseURL).then((response) => {
+    try{axios.get(baseURL).then((response) => {
       setPost(response.data);
-    });
+    })} catch (error) {
+      console.log(error)
+    }
   }, []);
 
   if (!post) return null;

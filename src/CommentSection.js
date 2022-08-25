@@ -8,10 +8,12 @@ const CommentSection = () => {
     const [comments, setComments] = React.useState(null);
 
           React.useEffect(() => {
-              axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`).then((response) => {
+              try{axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`).then((response) => {
                 setComments(response.data);
-              });
-            }, []);
+              })} catch (error) {
+                console.log(error);
+              }
+            }, [id]);
           
             if (!comments) return null;
       

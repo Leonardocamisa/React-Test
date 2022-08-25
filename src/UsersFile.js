@@ -9,17 +9,19 @@ const UserFile = () => {
     const [userNm, setUserNm] = React.useState(null);
 
           React.useEffect(() => {
-              axios.get(`https://jsonplaceholder.typicode.com/users/${id}`).then((response) => {
+              try{axios.get(`https://jsonplaceholder.typicode.com/users/${id}`).then((response) => {
                 setUserNm(response.data);
-              });
-            }, []);
+              })} catch (error) {
+                console.log(error)
+              }
+            }, [id]);
           
             if (!userNm) return null;
       
                 return (
                         <>
                           <div key={userNm.id}>
-                          <p>Written by :{userNm.name}</p>
+                          <p>Written by : <b>{userNm.name}</b></p>
                           </div>
                         </>
                     )            

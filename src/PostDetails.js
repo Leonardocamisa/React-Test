@@ -12,10 +12,12 @@ const PostDetails = () => {
     const [postData, setPostData] = React.useState(null);
     
     React.useEffect(() => {
-        axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`).then((response) => {
+        try {axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`).then((response) => {
           setPostData(response.data);
-        });
-      }, []);
+        })} catch (error) {
+          console.log(error);
+        }
+      }, [id]);
     
       if (!postData) return null;
 
