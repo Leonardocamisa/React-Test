@@ -1,14 +1,10 @@
 import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSearchParams } from 'react-router-dom';
-
 
 const baseURL = `https://jsonplaceholder.typicode.com/posts`;
 
 const PostList = () => {
-  const [ searchParams ] = useSearchParams();
-  const id = searchParams.get('id');
   const [post, setPost] = React.useState(null);
 
   React.useEffect(() => {
