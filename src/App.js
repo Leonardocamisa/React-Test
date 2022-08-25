@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import PostList from "./PostList";
-import PostDetails from "./PostDetails"
+import PostDetails from "./PostDetails";
 
 const App = () => {
   return (
