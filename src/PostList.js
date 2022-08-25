@@ -8,11 +8,9 @@ const PostList = () => {
   const [post, setPost] = React.useState(null);
 
   React.useEffect(() => {
-    try{axios.get(baseURL).then((response) => {
-      setPost(response.data);
-    })} catch (error) {
-      console.log(error)
-    }
+    axios.get(baseURL).then((response) => {
+      setPost(response.data)
+    }).catch(err => {console.log(err)}) 
   }, []);
 
   if (!post) return null;
@@ -20,7 +18,7 @@ const PostList = () => {
   return (
     post.slice(0, 10).map(post => {
     return <div key={post.id} className="card" >
-        <Link to={`/PostDetails?id=${post.id}`} style={{textDecoration: 'none', color:'white'}}>Press for details</Link>
+        <Link to={`/PostDetails?id=${post.id}`} style={{textDecoration: 'none', color:'white'}}>| View details |</Link>
       <h1>{post.title}</h1>
     </div>})
   );

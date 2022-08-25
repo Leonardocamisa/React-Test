@@ -8,25 +8,23 @@ const CommentSection = () => {
     const [comments, setComments] = React.useState(null);
 
           React.useEffect(() => {
-              try{axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`).then((response) => {
-                setComments(response.data);
-              })} catch (error) {
-                console.log(error);
-              }
+              axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`).then((response) => {
+                setComments(response.data)
+              }).catch(err => {console.log(err)}) 
             }, [id]);
-          
+              
             if (!comments) return null;
       
                 return (
                     comments.map(comment => {
-                    return <div key={comment.id}>
-                        <hr></hr>
-                        <p>{comment.body}</p>
-                        <p>{comment.email}</p>
-                        </div>
-                        
+                    return <>
+                              <div key={comment.id}>
+                                <hr></hr>
+                                <p>{comment.body}</p>
+                                <p>{comment.email}</p>
+                              </div>
+                            </>
                         }
-                        
                     )
             )
 }
